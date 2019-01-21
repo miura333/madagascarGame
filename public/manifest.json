@@ -1,0 +1,17 @@
+{
+    "name": "MadagascarGame",
+    "short_name": "madagascar",
+    "background_color": "#ffffff",
+    "icons": [{
+        "src": "./icon-180.png",
+        "sizes": "180x180",
+        "type": "image/png"
+    },{
+        "src": "./icon-120.png",
+        "sizes": "120x120",
+        "type": "image/png"
+    }],
+    "start_url": "./?utm_source=homescreen",
+    "display": "standalone",
+    "theme_color": "#f7f7f7"
+}

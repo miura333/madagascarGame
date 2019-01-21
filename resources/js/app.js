@@ -5,7 +5,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import VueRouter from 'vue-router';
+
+import game from './components/game.vue';
+
+//require('./bootstrap');
+
+require('../../public/css/vue-transition.css');
 
 window.Vue = require('vue');
 
@@ -28,6 +34,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.use(VueRouter);
+
+const routes = [
+    { path: '/', name: 'root-view', component: game }
+];
+
+const router = new VueRouter({
+    routes // `routes: routes` の短縮表記
+});
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: router
 });
