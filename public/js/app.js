@@ -119,6 +119,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./public/css/madagascar.css":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./public/css/madagascar.css ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "body {\n    margin-left: 0;\n    margin-right: 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n\n.appWrapper {\n    position : absolute;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n}\n\n.appHeader {\n    width: 100%;\n    height: 64px;\n    background-color: #f7f7f7;\n}\n\n.appHeaderBorder {\n    width: 100%;\n    height: 1px;\n    background-color: #4f4f4f;\n}\n\n.appHeaderTitle {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    color:#4f4f4f;\n    text-align:center;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.appHeaderBackButton {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    text-align:left;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.linkBackButtonText {\n    text-decoration: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./public/css/vue-transition.css":
 /*!***********************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./public/css/vue-transition.css ***!
@@ -1264,9 +1283,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("hoge")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "appWrapper" }, [
+      _c("div", { staticClass: "appHeader" }, [
+        _c("div", { staticClass: "appHeaderTitle" }, [
+          _c("table", { attrs: { border: "0", width: "100%" } }, [
+            _c("tr", [
+              _c("td", { attrs: { width: "20%" } }),
+              _vm._v(" "),
+              _c("td", { attrs: { width: "60%" } }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("td", { attrs: { width: "20%" } })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "appHeaderBorder" }),
+      _vm._v(" "),
+      _c("div", [_vm._v("hoge")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -15126,6 +15170,36 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./public/css/madagascar.css":
+/*!***********************************!*\
+  !*** ./public/css/madagascar.css ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./madagascar.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./public/css/madagascar.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./public/css/vue-transition.css":
 /*!***************************************!*\
   !*** ./public/css/vue-transition.css ***!
@@ -15174,6 +15248,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 
  //require('./bootstrap');
+
+__webpack_require__(/*! ../../public/css/madagascar.css */ "./public/css/madagascar.css");
 
 __webpack_require__(/*! ../../public/css/vue-transition.css */ "./public/css/vue-transition.css");
 

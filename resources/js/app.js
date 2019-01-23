@@ -11,6 +11,7 @@ import game from './components/game.vue';
 
 //require('./bootstrap');
 
+require('../../public/css/madagascar.css');
 require('../../public/css/vue-transition.css');
 
 window.Vue = require('vue');
