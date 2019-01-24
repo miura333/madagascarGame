@@ -119,6 +119,90 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/game.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/game.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    initMap: function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {
+          lat: 40.731,
+          lng: -73.997
+        }
+      });
+      var geocoder = new google.maps.Geocoder();
+      var infowindow = new google.maps.InfoWindow();
+      var self = this;
+      document.getElementById('submit').addEventListener('click', function () {
+        self.geocodeLatLng(geocoder, map, infowindow);
+      });
+    },
+    geocodeLatLng: function geocodeLatLng(geocoder, map, infowindow) {
+      var input = document.getElementById('latlng').value;
+      var latlngStr = input.split(',', 2);
+      var latlng = {
+        lat: parseFloat(latlngStr[0]),
+        lng: parseFloat(latlngStr[1])
+      };
+      geocoder.geocode({
+        'location': latlng
+      }, function (results, status) {
+        if (status === 'OK') {
+          if (results[0]) {
+            console.log(results[0]);
+            map.setZoom(11);
+            var marker = new google.maps.Marker({
+              position: latlng,
+              map: map
+            });
+            infowindow.setContent(results[0].formatted_address);
+            infowindow.open(map, marker);
+          } else {
+            window.alert('No results found');
+          }
+        } else {
+          window.alert('Geocoder failed due to: ' + status);
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.initMap();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./public/css/madagascar.css":
 /*!*******************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./public/css/madagascar.css ***!
@@ -131,7 +215,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\n    margin-left: 0;\n    margin-right: 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n\n.appWrapper {\n    position : absolute;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n}\n\n.appHeader {\n    width: 100%;\n    height: 64px;\n    background-color: #f7f7f7;\n}\n\n.appHeaderBorder {\n    width: 100%;\n    height: 1px;\n    background-color: #4f4f4f;\n}\n\n.appHeaderTitle {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    color:#4f4f4f;\n    text-align:center;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.appHeaderBackButton {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    text-align:left;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.linkBackButtonText {\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "body {\n    margin-left: 0;\n    margin-right: 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n\n.appWrapper {\n    position : absolute;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n}\n\n.appHeader {\n    width: 100%;\n    height: 64px;\n    background-color: #f7f7f7;\n}\n\n.appHeaderBorder {\n    width: 100%;\n    height: 1px;\n    background-color: #4f4f4f;\n}\n\n.appHeaderTitle {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    color:#4f4f4f;\n    text-align:center;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.appHeaderBackButton {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    text-align:left;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.linkBackButtonText {\n    text-decoration: none;\n}\n\n#floating-panel {\n    position: absolute;\n    top: 10px;\n    left: 25%;\n    z-index: 5;\n    background-color: #fff;\n    padding: 5px;\n    border: 1px solid #999;\n    text-align: center;\n    font-family: 'Roboto','sans-serif';\n    line-height: 30px;\n    padding-left: 10px;\n}\n\n#floating-panel {\n    position: absolute;\n    top: 5px;\n    left: 50%;\n    margin-left: -180px;\n    width: 350px;\n    z-index: 5;\n    background-color: #fff;\n    padding: 5px;\n    border: 1px solid #999;\n}\n#latlng {\n    width: 225px;\n}\n\n#map {\n    height: 960px;\n}\n", ""]);
 
 // exports
 
@@ -1307,7 +1391,17 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "appHeaderBorder" }),
       _vm._v(" "),
-      _c("div", [_vm._v("hoge")])
+      _c("div", { attrs: { id: "floating-panel" } }, [
+        _c("input", {
+          attrs: { id: "latlng", type: "text", value: "40.714224,-73.961452" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { id: "submit", type: "button", value: "Reverse Geocode" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "map" } })
     ])
   }
 ]
@@ -15367,15 +15461,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game_vue_vue_type_template_id_365215bd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game.vue?vue&type=template&id=365215bd& */ "./resources/js/components/game.vue?vue&type=template&id=365215bd&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game.vue?vue&type=script&lang=js& */ "./resources/js/components/game.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _game_vue_vue_type_template_id_365215bd___WEBPACK_IMPORTED_MODULE_0__["render"],
   _game_vue_vue_type_template_id_365215bd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -15389,6 +15485,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/game.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/game.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/game.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./game.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/game.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

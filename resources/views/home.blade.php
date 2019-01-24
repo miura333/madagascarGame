@@ -10,7 +10,8 @@
         </script>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrUF9nrufoi8gHHOFGUju0BkWQ7vpzK4E"></script>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
