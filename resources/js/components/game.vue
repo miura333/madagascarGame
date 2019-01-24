@@ -12,10 +12,6 @@
             </div>
         </div>
         <div class="appHeaderBorder"></div>
-        <div id="floating-panel">
-            <input id="latlng" type="text" value="40.714224,-73.961452">
-            <input id="submit" type="button" value="Reverse Geocode">
-        </div>
         <div id="map"></div>
     </div>
 </template>
@@ -25,7 +21,7 @@ export default {
     methods: {
         initMap: function () {
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
+                zoom: 2,
                 center: {lat: 40.731, lng: -73.997}
             });
             var geocoder = new google.maps.Geocoder;
@@ -33,21 +29,25 @@ export default {
 
             var self = this;
 
-            document.getElementById('submit').addEventListener('click', function() {
-                self.geocodeLatLng(geocoder, map, infowindow);
+            map.addListener('click', function(e) {
+                self.geocodeLatLng(geocoder, map, infowindow, e.latLng);
             });
         },
-        geocodeLatLng(geocoder, map, infowindow) {
-            var input = document.getElementById('latlng').value;
-            var latlngStr = input.split(',', 2);
-            var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-            geocoder.geocode({'location': latlng}, function(results, status) {
+        geocodeLatLng(geocoder, map, infowindow, latLng) {
+            geocoder.geocode({'location': latLng}, function(results, status) {
                 if (status === 'OK') {
                     if (results[0]) {
-                        console.log(results[0]);
-                        map.setZoom(11);
+                        for (var i = 0; i < results[0].address_components.length; i++) {
+                            var addr = results[0].address_components[i];
+                            var getCountry;
+                            if (addr.types[0] == 'country') {
+                                getCountry = addr.short_name;
+                            }
+                            console.log(getCountry);
+                        }
+
                         var marker = new google.maps.Marker({
-                            position: latlng,
+                            position: latLng,
                             map: map
                         });
                         infowindow.setContent(results[0].formatted_address);

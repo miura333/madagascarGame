@@ -163,26 +163,35 @@ __webpack_require__.r(__webpack_exports__);
       var geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       var self = this;
-      document.getElementById('submit').addEventListener('click', function () {
-        self.geocodeLatLng(geocoder, map, infowindow);
-      });
+      map.addListener('click', function (e) {
+        self.geocodeLatLng(geocoder, map, infowindow, e.latLng);
+      }); // document.getElementById('map').addEventListener('click', function() {
+      //     self.geocodeLatLng(geocoder, map, infowindow);
+      // });
     },
-    geocodeLatLng: function geocodeLatLng(geocoder, map, infowindow) {
-      var input = document.getElementById('latlng').value;
-      var latlngStr = input.split(',', 2);
-      var latlng = {
-        lat: parseFloat(latlngStr[0]),
-        lng: parseFloat(latlngStr[1])
-      };
+    geocodeLatLng: function geocodeLatLng(geocoder, map, infowindow, latLng) {
+      // var input = document.getElementById('latlng').value;
+      // var latlngStr = input.split(',', 2);
+      // var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
       geocoder.geocode({
-        'location': latlng
+        'location': latLng
       }, function (results, status) {
         if (status === 'OK') {
           if (results[0]) {
-            console.log(results[0]);
-            map.setZoom(11);
+            for (var i = 0; i < results[0].address_components.length; i++) {
+              var addr = results[0].address_components[i];
+              var getCountry;
+
+              if (addr.types[0] == 'country') {
+                getCountry = addr.short_name;
+              }
+
+              console.log(getCountry);
+            } // map.setZoom(11);
+
+
             var marker = new google.maps.Marker({
-              position: latlng,
+              position: latLng,
               map: map
             });
             infowindow.setContent(results[0].formatted_address);
@@ -1390,16 +1399,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "appHeaderBorder" }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "floating-panel" } }, [
-        _c("input", {
-          attrs: { id: "latlng", type: "text", value: "40.714224,-73.961452" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { id: "submit", type: "button", value: "Reverse Geocode" }
-        })
-      ]),
       _vm._v(" "),
       _c("div", { attrs: { id: "map" } })
     ])
