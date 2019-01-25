@@ -1819,6 +1819,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1827,13 +1842,14 @@ __webpack_require__.r(__webpack_exports__);
       country_name: '',
       country_code: '',
       timerObj: null,
-      showModal: false
+      showModal: false,
+      user_name: ''
     };
   },
   methods: {
     initMap: function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
+        zoom: 4,
         center: {
           lat: 35.685529,
           lng: 139.752680
@@ -1879,6 +1895,9 @@ __webpack_require__.r(__webpack_exports__);
           window.alert('Geocoder failed due to: ' + status);
         }
       });
+    },
+    sendResult: function sendResult() {
+      this.showModal = false;
     }
   },
   mounted: function mounted() {
@@ -3228,7 +3247,66 @@ var render = function() {
             },
             [
               _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("custom header")
+                _vm._v("Goooooal!")
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+                _vm._v("\n            Your name"),
+                _c("br"),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user_name,
+                      expression: "user_name"
+                    }
+                  ],
+                  domProps: { value: _vm.user_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.user_name = $event.target.value
+                    }
+                  }
+                }),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n            タイムは" +
+                    _vm._s(_vm.count.toFixed(1)) +
+                    "秒でした。"
+                ),
+                _c("br"),
+                _vm._v("\n            名前を入力してタイムを登録！\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "modal-default-button",
+                    on: { click: _vm.sendResult }
+                  },
+                  [_vm._v("\n                送信\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "modal-default-button",
+                    on: {
+                      click: function($event) {
+                        _vm.showModal = false
+                      }
+                    }
+                  },
+                  [_vm._v("\n                キャンセル\n            ")]
+                )
               ])
             ]
           )

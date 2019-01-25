@@ -14,7 +14,22 @@
         <div class="appHeaderBorder"></div>
         <div id="map"></div>
         <modal v-if="showModal" @close="showModal = false">
-            <h3 slot="header">custom header</h3>
+            <h3 slot="header">Goooooal!</h3>
+            <div slot="body">
+                Your name<br>
+                <input v-model="user_name"><br>
+                <br>
+                タイムは{{count.toFixed(1)}}秒でした。<br>
+                名前を入力してタイムを登録！
+            </div>
+            <div slot="footer">
+                <button class="modal-default-button" @click="sendResult">
+                    送信
+                </button>
+                <button class="modal-default-button" @click="showModal = false">
+                    キャンセル
+                </button>
+            </div>
         </modal>
     </div>
 </template>
@@ -29,13 +44,14 @@ export default {
             country_name: '',
             country_code: '',
             timerObj: null,
-            showModal: false
+            showModal: false,
+            user_name: '',
         };
     },
     methods: {
         initMap: function () {
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 6,
+                zoom: 4,
                 center: {lat: 35.685529, lng: 139.752680}
             });
             var geocoder = new google.maps.Geocoder;
@@ -79,6 +95,9 @@ export default {
                     window.alert('Geocoder failed due to: ' + status);
                 }
             });
+        },
+        sendResult() {
+            this.showModal = false;
         }
     },
     mounted: function () {
