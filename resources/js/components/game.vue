@@ -13,6 +13,9 @@
         </div>
         <div class="appHeaderBorder"></div>
         <div id="map"></div>
+        <modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">custom header</h3>
+        </modal>
     </div>
 </template>
 
@@ -26,6 +29,7 @@ export default {
             country_name: '',
             country_code: '',
             timerObj: null,
+            showModal: false
         };
     },
     methods: {
@@ -63,6 +67,7 @@ export default {
                                 var country_code = addr.short_name;
                                 if(country_code == self.country_code) {
                                     clearInterval(self.timerObj);
+                                    self.showModal = true;
                                 }
                             }
                         }
