@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get('/api/getCountry', 'gameController@getCountry');
 Route::post('/api/putScore', 'gameController@putScore');
+Route::get('/api/getScoreByCountry/{country_code}', 'gameController@getScoreByCountry');
+Route::get('/api/getScoreByUser/{user_id}', 'gameController@getScoreByUser');

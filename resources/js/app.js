@@ -11,6 +11,7 @@ import VueUUID from 'vue-uuid';
 
 import game from './components/game.vue';
 import modalDialog from './components/modalDialog.vue';
+import scoreCountry from './components/scoreCountry.vue';
 
 //require('./bootstrap');
 
@@ -44,7 +45,8 @@ Vue.use(VueCookie);
 Vue.use(VueUUID);
 
 const routes = [
-    { path: '/', name: 'root-view', component: game }
+    { path: '/', name: 'root-view', component: game },
+    { path: '/score/country', name: 'score-country-view', component: scoreCountry }
 ];
 
 const router = new VueRouter({
@@ -53,5 +55,17 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router: router
+    router: router,
+    data: {
+        pageTransition: 'forward'
+    },
+    watch: {
+        '$route': function (to, from) {
+            if(to.path == '/') {
+                this.pageTransition = 'back';
+            }else{
+                this.pageTransition = 'forward';
+            }
+        }
+    }
 });

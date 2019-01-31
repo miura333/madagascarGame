@@ -31,4 +31,24 @@ class gameController extends Controller
         $model->score = $request->score;
         $model->save();
     }
+
+    public function getScoreByCountry(Request $request)
+    {
+        Log::debug($request);
+
+        $model = new scoreModel();
+        $result = $model->where('country_code', $request->country_code)->orderBy('score', 'desc')->get();
+
+        return ['score' => $result];
+    }
+
+    public function getScoreByUser(Request $request)
+    {
+        Log::debug($request);
+
+        $model = new scoreModel();
+        $result = $model->where('user_id', $request->user_id)->orderBy('country_code', 'desc')->get();
+
+        return ['score' => $result];
+    }
 }

@@ -91,3 +91,25 @@ body {
     /* height: 960px; */
     height: calc(100% - 64px);
 }
+
+/* スコア画面 */
+.scoreCellColl {
+    width: 100%;
+    height: 64px;
+    font-family:'Hiragino Kaku Gothic Pro','Meiryo';
+    font-size:22px;
+    font-weight:normal;
+    color:#4f4f4f;
+    line-height: 64px;
+    vertical-align: middle;
+}
+
+.scoreCell {
+    width: 100%;
+    height: 64px;
+    background-color: #ffffff;
+}
+
+.scoreTextScore {
+    text-align:right;
+}

@@ -121,8 +121,8 @@ export default {
             var url = '/api/putScore';
 
             axios.post(url, params).then(function(response){
-                self.showModalComplete = true;
-                // self.$router.push({ name: 'root-view'});
+                //self.showModalComplete = true;
+                self.$router.push({ name: 'score-country-view', params:{country_code:self.country_code}});
             });
         }
     },
