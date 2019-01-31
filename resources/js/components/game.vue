@@ -31,6 +31,9 @@
                 </button>
             </div>
         </modal>
+        <modal v-if="showModalComplete" @close="showModalComplete = false">
+            <h3 slot="header">Saved!</h3>
+        </modal>
     </div>
 </template>
 
@@ -46,6 +49,7 @@ export default {
             timerObj: null,
             showModal: false,
             user_name: '',
+            showModalComplete: false,
         };
     },
     methods: {
@@ -98,10 +102,39 @@ export default {
         },
         sendResult() {
             this.showModal = false;
+
+            var self = this;
+
+            //cookieに保存
+            this.$cookie.set('user_name', this.user_name, 365);
+            //userIdはcookieを参照し、無かったらここで作る
+            var user_id = this.$cookie.get('user_id');
+            if(user_id == null) {
+                this.$cookie.set('user_id', this.$uuid.v1(), 365);
+            }
+
+            let params = new URLSearchParams();
+            params.append('user_id', user_id);
+            params.append('country_code', this.country_code);
+            params.append('score', this.count);
+
+            var url = '/api/putScore';
+
+            axios.post(url, params).then(function(response){
+                self.showModalComplete = true;
+                // self.$router.push({ name: 'root-view'});
+            });
         }
     },
     mounted: function () {
         var self = this;
+
+        var tmp_name = this.$cookie.get('user_name');
+        console.log(tmp_name);
+        console.log(this.$cookie.get('user_id'));
+        if(tmp_name != null) {
+            this.user_name = tmp_name;
+        }
 
         axios.get('/api/getCountry').then(function(response){
             console.log(response);

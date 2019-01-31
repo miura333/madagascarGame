@@ -6,6 +6,8 @@
  */
 
 import VueRouter from 'vue-router';
+import VueCookie from 'vue-cookie';
+import VueUUID from 'vue-uuid';
 
 import game from './components/game.vue';
 import modalDialog from './components/modalDialog.vue';
@@ -38,6 +40,8 @@ Vue.component('modal', modalDialog);
  */
 
 Vue.use(VueRouter);
+Vue.use(VueCookie);
+Vue.use(VueUUID);
 
 const routes = [
     { path: '/', name: 'root-view', component: game }
