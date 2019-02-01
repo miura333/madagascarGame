@@ -4326,7 +4326,33 @@ var render = function() {
     "div",
     { staticClass: "appWrapper" },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "appHeader" }, [
+        _c("div", { staticClass: "appHeaderTitle" }, [
+          _c("table", { attrs: { border: "0", width: "100%" } }, [
+            _c("tr", [
+              _c(
+                "td",
+                { attrs: { width: "20%" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "linkBackButtonText",
+                      attrs: { to: { name: "root-view" } }
+                    },
+                    [_vm._v("Back")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("td", { attrs: { width: "60%" } }, [_vm._v("Result")]),
+              _vm._v(" "),
+              _c("td", { attrs: { width: "20%" } })
+            ])
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "appHeaderBorder" }),
       _vm._v(" "),
@@ -4365,26 +4391,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "appHeader" }, [
-      _c("div", { staticClass: "appHeaderTitle" }, [
-        _c("table", { attrs: { border: "0", width: "100%" } }, [
-          _c("tr", [
-            _c("td", { attrs: { width: "20%" } }),
-            _vm._v(" "),
-            _c("td", { attrs: { width: "60%" } }, [_vm._v("Result")]),
-            _vm._v(" "),
-            _c("td", { attrs: { width: "20%" } })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

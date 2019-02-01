@@ -4,7 +4,7 @@
             <div class="appHeaderTitle">
                 <table border="0" width="100%">
                     <tr>
-                        <td width="20%"></td>
+                        <td width="20%"><router-link class="linkBackButtonText" :to="{name:'root-view'}">Back</router-link></td>
                         <td width="60%">Result</td>
                         <td width="20%"></td>
                     </tr>
