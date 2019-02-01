@@ -2114,10 +2114,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      scores: []
+      scores: [],
+      country_array: []
     };
   },
-  methods: {},
+  methods: {
+    getCountryName: function getCountryName(country_code) {
+      for (var i = 0; i < this.country_array.length; i++) {
+        if (this.country_array[i].code == country_code) {
+          return this.country_array[i].name;
+        }
+      }
+
+      return null;
+    }
+  },
   mounted: function mounted() {
     var self = this;
     var url = '/api/getScoreByUser';
@@ -2125,6 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       console.log(response);
       self.scores = response.data.score;
+      self.country_array = response.data.country_array;
     });
   }
 });
@@ -4369,7 +4381,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", { attrs: { width: "30%" } }, [
-                    _vm._v(_vm._s(score.country_code))
+                    _vm._v(_vm._s(_vm.getCountryName(score.country_code)))
                   ]),
                   _vm._v(" "),
                   _c(

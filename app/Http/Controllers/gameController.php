@@ -14,6 +14,18 @@ use Config;
 
 class gameController extends Controller
 {
+    private function findCountryName($country_code)
+    {
+        $countries = Config::get('game.country_data.normal');
+        foreach ($countries as $country) {
+            if($country['code'] === $country_code) {
+                return $country['name'];
+            }
+        }
+
+        return NULL;
+    }
+
     public function getCountry(Request $request)
     {
         $country = Config::get('game.country_data.normal');
@@ -78,12 +90,12 @@ class gameController extends Controller
         Log::debug($request);
 
         $model = new scoreModel();
-        $result = $model->join('anonymous_users', 'score.user_id', '=', 'anonymous_users.user_id')
+        $results = $model->join('anonymous_users', 'score.user_id', '=', 'anonymous_users.user_id')
                         ->select('score.*', 'anonymous_users.user_name')
                         ->where('score.user_id', $request->user_id)
                         ->orderBy('country_code', 'desc')
                         ->get();
 
-        return ['score' => $result];
+        return ['score' => $results, 'country_array' => Config::get('game.country_data.normal')];
     }
 }
