@@ -18,7 +18,7 @@
                     <table border="0" width="100%">
                         <tr>
                             <td width="5%"></td>
-                            <td width="45%">hogefuga</td>
+                            <td width="45%">{{score.user_name}}</td>
                             <td width="45%" class="scoreTextScore">{{score.score.toFixed(1)}} sec</td>
                             <td width="5%"></td>
                         </tr>

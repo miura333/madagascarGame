@@ -1914,15 +1914,17 @@ __webpack_require__.r(__webpack_exports__);
 
       var params = new URLSearchParams();
       params.append('user_id', user_id);
+      params.append('user_name', this.user_name);
       params.append('country_code', this.country_code);
       params.append('score', this.count);
       var url = '/api/putScore';
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, params).then(function (response) {
         //self.showModalComplete = true;
+        //self.$router.push({ name: 'score-country-view', params:{country_code:self.country_code}});
         self.$router.push({
-          name: 'score-country-view',
+          name: 'score-user-view',
           params: {
-            country_code: self.country_code
+            user_id: user_id
           }
         });
       });
@@ -2055,6 +2057,71 @@ __webpack_require__.r(__webpack_exports__);
     var self = this;
     var url = '/api/getScoreByCountry';
     url += '/' + this.$route.params.country_code;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      console.log(response);
+      self.scores = response.data.score;
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/scoreUser.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/scoreUser.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      scores: []
+    };
+  },
+  methods: {},
+  mounted: function mounted() {
+    var self = this;
+    var url = '/api/getScoreByUser';
+    url += '/' + this.$route.params.user_id;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
       console.log(response);
       self.scores = response.data.score;
@@ -4191,11 +4258,97 @@ var render = function() {
                 _c("tr", [
                   _c("td", { attrs: { width: "5%" } }),
                   _vm._v(" "),
-                  _c("td", { attrs: { width: "45%" } }, [_vm._v("hogefuga")]),
+                  _c("td", { attrs: { width: "45%" } }, [
+                    _vm._v(_vm._s(score.user_name))
+                  ]),
                   _vm._v(" "),
                   _c(
                     "td",
                     { staticClass: "scoreTextScore", attrs: { width: "45%" } },
+                    [_vm._v(_vm._s(score.score.toFixed(1)) + " sec")]
+                  ),
+                  _vm._v(" "),
+                  _c("td", { attrs: { width: "5%" } })
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "appHeaderBorder" })
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "appHeader" }, [
+      _c("div", { staticClass: "appHeaderTitle" }, [
+        _c("table", { attrs: { border: "0", width: "100%" } }, [
+          _c("tr", [
+            _c("td", { attrs: { width: "20%" } }),
+            _vm._v(" "),
+            _c("td", { attrs: { width: "60%" } }, [_vm._v("Result")]),
+            _vm._v(" "),
+            _c("td", { attrs: { width: "20%" } })
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/scoreUser.vue?vue&type=template&id=30ff0d7c&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/scoreUser.vue?vue&type=template&id=30ff0d7c& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "appWrapper" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "appHeaderBorder" }),
+      _vm._v(" "),
+      _vm._l(_vm.scores, function(score) {
+        return _c("div", [
+          _c("div", { staticClass: "scoreCell" }, [
+            _c("div", { staticClass: "scoreCellColl" }, [
+              _c("table", { attrs: { border: "0", width: "100%" } }, [
+                _c("tr", [
+                  _c("td", { attrs: { width: "5%" } }),
+                  _vm._v(" "),
+                  _c("td", { attrs: { width: "30%" } }, [
+                    _vm._v(_vm._s(score.user_name))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { width: "30%" } }, [
+                    _vm._v(_vm._s(score.country_code))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "scoreTextScore", attrs: { width: "30%" } },
                     [_vm._v(_vm._s(score.score.toFixed(1)) + " sec")]
                   ),
                   _vm._v(" "),
@@ -18234,11 +18387,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_game_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/game.vue */ "./resources/js/components/game.vue");
 /* harmony import */ var _components_modalDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/modalDialog.vue */ "./resources/js/components/modalDialog.vue");
 /* harmony import */ var _components_scoreCountry_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/scoreCountry.vue */ "./resources/js/components/scoreCountry.vue");
+/* harmony import */ var _components_scoreUser_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/scoreUser.vue */ "./resources/js/components/scoreUser.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 
 
@@ -18280,6 +18435,10 @@ var routes = [{
   path: '/score/country',
   name: 'score-country-view',
   component: _components_scoreCountry_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+}, {
+  path: '/score/user',
+  name: 'score-user-view',
+  component: _components_scoreUser_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: routes // `routes: routes` の短縮表記
@@ -18593,6 +18752,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreCountry_vue_vue_type_template_id_292e7322___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreCountry_vue_vue_type_template_id_292e7322___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/scoreUser.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/scoreUser.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scoreUser.vue?vue&type=template&id=30ff0d7c& */ "./resources/js/components/scoreUser.vue?vue&type=template&id=30ff0d7c&");
+/* harmony import */ var _scoreUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scoreUser.vue?vue&type=script&lang=js& */ "./resources/js/components/scoreUser.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _scoreUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/scoreUser.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/scoreUser.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/scoreUser.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./scoreUser.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/scoreUser.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/scoreUser.vue?vue&type=template&id=30ff0d7c&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/scoreUser.vue?vue&type=template&id=30ff0d7c& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./scoreUser.vue?vue&type=template&id=30ff0d7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/scoreUser.vue?vue&type=template&id=30ff0d7c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

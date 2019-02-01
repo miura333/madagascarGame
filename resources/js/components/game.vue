@@ -115,6 +115,7 @@ export default {
 
             let params = new URLSearchParams();
             params.append('user_id', user_id);
+            params.append('user_name', this.user_name);
             params.append('country_code', this.country_code);
             params.append('score', this.count);
 
@@ -122,7 +123,8 @@ export default {
 
             axios.post(url, params).then(function(response){
                 //self.showModalComplete = true;
-                self.$router.push({ name: 'score-country-view', params:{country_code:self.country_code}});
+                //self.$router.push({ name: 'score-country-view', params:{country_code:self.country_code}});
+                self.$router.push({ name: 'score-user-view', params:{user_id:user_id}});
             });
         }
     },

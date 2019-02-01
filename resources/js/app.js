@@ -12,6 +12,7 @@ import VueUUID from 'vue-uuid';
 import game from './components/game.vue';
 import modalDialog from './components/modalDialog.vue';
 import scoreCountry from './components/scoreCountry.vue';
+import scoreUser from './components/scoreUser.vue';
 
 //require('./bootstrap');
 
@@ -46,7 +47,8 @@ Vue.use(VueUUID);
 
 const routes = [
     { path: '/', name: 'root-view', component: game },
-    { path: '/score/country', name: 'score-country-view', component: scoreCountry }
+    { path: '/score/country', name: 'score-country-view', component: scoreCountry },
+    { path: '/score/user', name: 'score-user-view', component: scoreUser }
 ];
 
 const router = new VueRouter({
