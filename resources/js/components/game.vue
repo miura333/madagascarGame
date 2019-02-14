@@ -26,13 +26,21 @@
                 <button class="modal-default-button" @click="sendResult">
                     送信
                 </button>
-                <button class="modal-default-button" @click="showModal = false">
+                <button class="modal-default-button" @click="sendCancel">
                     キャンセル
                 </button>
             </div>
         </modal>
-        <modal v-if="showModalComplete" @close="showModalComplete = false">
-            <h3 slot="header">Saved!</h3>
+        <modal v-if="showModalOnStart" @close="showModalOnStart = false">
+            <h3 slot="header">マダガスカルゲーム</h3>
+            <div slot="body">
+                開始するにはスタートボタンを押してください。
+            </div>
+            <div slot="footer">
+                <button class="modal-default-button" @click="startGame">
+                    スタート
+                </button>
+            </div>
         </modal>
     </div>
 </template>
@@ -49,12 +57,13 @@ export default {
             timerObj: null,
             showModal: false,
             user_name: '',
-            showModalComplete: false,
+            showModalOnStart: false,
+            map: null
         };
     },
     methods: {
         initMap: function () {
-            var map = new google.maps.Map(document.getElementById('map'), {
+            this.map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
                 center: {lat: 35.685529, lng: 139.752680}
             });
@@ -63,8 +72,8 @@ export default {
 
             var self = this;
 
-            map.addListener('click', function(e) {
-                self.geocodeLatLng(geocoder, map, infowindow, e.latLng);
+            this.map.addListener('click', function(e) {
+                self.geocodeLatLng(geocoder, this.map, infowindow, e.latLng);
             });
         },
         geocodeLatLng(geocoder, map, infowindow, latLng) {
@@ -126,31 +135,66 @@ export default {
                 //self.$router.push({ name: 'score-country-view', params:{country_code:self.country_code}});
                 self.$router.push({ name: 'score-user-view', params:{user_id:user_id}});
             });
+        },
+        sendCancel() {
+            this.showModal = false;
+            this.showModalOnStart = true;
+
+            this.map.setCenter({lat: 35.685529, lng: 139.752680});
+            this.count = 0.0;
+            this.country_name = '';
+            this.country_code = '';
+        },
+        startGame() {
+            this.showModalOnStart = false;
+
+            var self = this;
+
+            var tmp_name = this.$cookie.get('user_name');
+            console.log(tmp_name);
+            console.log(this.$cookie.get('user_id'));
+            if(tmp_name != null) {
+                this.user_name = tmp_name;
+            }
+
+            axios.get('/api/getCountry').then(function(response){
+                console.log(response);
+                self.country_name = response.data.name;
+                self.country_code = response.data.code;
+
+                //timer
+                var countup = function(){
+                    self.count += 0.1;
+                }
+                self.timerObj = setInterval(countup, 100);
+            });
         }
     },
     mounted: function () {
-        var self = this;
-
-        var tmp_name = this.$cookie.get('user_name');
-        console.log(tmp_name);
-        console.log(this.$cookie.get('user_id'));
-        if(tmp_name != null) {
-            this.user_name = tmp_name;
-        }
-
-        axios.get('/api/getCountry').then(function(response){
-            console.log(response);
-            self.country_name = response.data.name;
-            self.country_code = response.data.code;
-
-            self.initMap();
-
-            //timer
-            var countup = function(){
-                self.count += 0.1;
-            }
-            self.timerObj = setInterval(countup, 100);
-        });
+        this.initMap();
+        this.showModalOnStart = true;
+        // var self = this;
+        //
+        // var tmp_name = this.$cookie.get('user_name');
+        // console.log(tmp_name);
+        // console.log(this.$cookie.get('user_id'));
+        // if(tmp_name != null) {
+        //     this.user_name = tmp_name;
+        // }
+        //
+        // axios.get('/api/getCountry').then(function(response){
+        //     console.log(response);
+        //     self.country_name = response.data.name;
+        //     self.country_code = response.data.code;
+        //
+        //     self.initMap();
+        //
+        //     //timer
+        //     var countup = function(){
+        //         self.count += 0.1;
+        //     }
+        //     self.timerObj = setInterval(countup, 100);
+        // });
     }
 };
 </script>

@@ -1837,6 +1837,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1847,12 +1855,13 @@ __webpack_require__.r(__webpack_exports__);
       timerObj: null,
       showModal: false,
       user_name: '',
-      showModalComplete: false
+      showModalOnStart: false,
+      map: null
     };
   },
   methods: {
     initMap: function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
+      this.map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
         center: {
           lat: 35.685529,
@@ -1862,8 +1871,8 @@ __webpack_require__.r(__webpack_exports__);
       var geocoder = new google.maps.Geocoder();
       var infowindow = new google.maps.InfoWindow();
       var self = this;
-      map.addListener('click', function (e) {
-        self.geocodeLatLng(geocoder, map, infowindow, e.latLng);
+      this.map.addListener('click', function (e) {
+        self.geocodeLatLng(geocoder, this.map, infowindow, e.latLng);
       });
     },
     geocodeLatLng: function geocodeLatLng(geocoder, map, infowindow, latLng) {
@@ -1928,30 +1937,66 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    sendCancel: function sendCancel() {
+      this.showModal = false;
+      this.showModalOnStart = true;
+      this.map.setCenter({
+        lat: 35.685529,
+        lng: 139.752680
+      });
+      this.count = 0.0;
+      this.country_name = '';
+      this.country_code = '';
+    },
+    startGame: function startGame() {
+      this.showModalOnStart = false;
+      var self = this;
+      var tmp_name = this.$cookie.get('user_name');
+      console.log(tmp_name);
+      console.log(this.$cookie.get('user_id'));
+
+      if (tmp_name != null) {
+        this.user_name = tmp_name;
+      }
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/getCountry').then(function (response) {
+        console.log(response);
+        self.country_name = response.data.name;
+        self.country_code = response.data.code; //timer
+
+        var countup = function countup() {
+          self.count += 0.1;
+        };
+
+        self.timerObj = setInterval(countup, 100);
+      });
     }
   },
   mounted: function mounted() {
-    var self = this;
-    var tmp_name = this.$cookie.get('user_name');
-    console.log(tmp_name);
-    console.log(this.$cookie.get('user_id'));
-
-    if (tmp_name != null) {
-      this.user_name = tmp_name;
-    }
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/getCountry').then(function (response) {
-      console.log(response);
-      self.country_name = response.data.name;
-      self.country_code = response.data.code;
-      self.initMap(); //timer
-
-      var countup = function countup() {
-        self.count += 0.1;
-      };
-
-      self.timerObj = setInterval(countup, 100);
-    });
+    this.initMap();
+    this.showModalOnStart = true; // var self = this;
+    //
+    // var tmp_name = this.$cookie.get('user_name');
+    // console.log(tmp_name);
+    // console.log(this.$cookie.get('user_id'));
+    // if(tmp_name != null) {
+    //     this.user_name = tmp_name;
+    // }
+    //
+    // axios.get('/api/getCountry').then(function(response){
+    //     console.log(response);
+    //     self.country_name = response.data.name;
+    //     self.country_code = response.data.code;
+    //
+    //     self.initMap();
+    //
+    //     //timer
+    //     var countup = function(){
+    //         self.count += 0.1;
+    //     }
+    //     self.timerObj = setInterval(countup, 100);
+    // });
   }
 });
 
@@ -4113,11 +4158,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "modal-default-button",
-                    on: {
-                      click: function($event) {
-                        _vm.showModal = false
-                      }
-                    }
+                    on: { click: _vm.sendCancel }
                   },
                   [_vm._v("\n                キャンセル\n            ")]
                 )
@@ -4126,19 +4167,36 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.showModalComplete
+      _vm.showModalOnStart
         ? _c(
             "modal",
             {
               on: {
                 close: function($event) {
-                  _vm.showModalComplete = false
+                  _vm.showModalOnStart = false
                 }
               }
             },
             [
               _c("h3", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v("Saved!")
+                _vm._v("マダガスカルゲーム")
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+                _vm._v(
+                  "\n            開始するにはスタートボタンを押してください。\n        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "modal-default-button",
+                    on: { click: _vm.startGame }
+                  },
+                  [_vm._v("\n                スタート\n            ")]
+                )
               ])
             ]
           )
