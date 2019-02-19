@@ -2153,8 +2153,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2200,7 +2198,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body {\n    margin-left: 0;\n    margin-right: 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n\n.appWrapper {\n    position : absolute;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n    height: 100%;\n}\n\n.appHeader {\n    width: 100%;\n    height: 64px;\n    background-color: #f7f7f7;\n}\n\n.appHeaderBorder {\n    width: 100%;\n    height: 1px;\n    background-color: #4f4f4f;\n}\n\n.appHeaderTitle {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    color:#4f4f4f;\n    text-align:center;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.appHeaderBackButton {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    text-align:left;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.linkBackButtonText {\n    text-decoration: none;\n}\n\n#floating-panel {\n    position: absolute;\n    top: 10px;\n    left: 25%;\n    z-index: 5;\n    background-color: #fff;\n    padding: 5px;\n    border: 1px solid #999;\n    text-align: center;\n    font-family: 'Roboto','sans-serif';\n    line-height: 30px;\n    padding-left: 10px;\n}\n\n#floating-panel {\n    position: absolute;\n    top: 5px;\n    left: 50%;\n    margin-left: -180px;\n    width: 350px;\n    z-index: 5;\n    background-color: #fff;\n    padding: 5px;\n    border: 1px solid #999;\n}\n#latlng {\n    width: 225px;\n}\n\n#map {\n    /* height: 960px; */\n    height: calc(100% - 64px);\n}\n\n/* スコア画面 */\n.scoreCellColl {\n    width: 100%;\n    height: 64px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:22px;\n    font-weight:normal;\n    color:#4f4f4f;\n    line-height: 64px;\n    vertical-align: middle;\n}\n\n.scoreCell {\n    width: 100%;\n    height: 64px;\n    background-color: #ffffff;\n}\n\n.scoreTextScore {\n    text-align:right;\n}\n", ""]);
+exports.push([module.i, "body {\n    margin-left: 0;\n    margin-right: 0;\n    margin-top: 0;\n    margin-bottom: 0;\n}\n\n.appWrapper {\n    position : absolute;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n    height: 100%;\n}\n\n.appHeader {\n    width: 100%;\n    height: 64px;\n    background-color: #f7f7f7;\n}\n\n.appHeaderBorder {\n    width: 100%;\n    height: 1px;\n    background-color: #4f4f4f;\n}\n\n.appHeaderTitle {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    color:#4f4f4f;\n    text-align:center;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.appHeaderBackButton {\n    position : absolute;\n    left: 0px;\n    top: 20px;\n    width: 100%;\n    height: 44px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:18px;\n    font-weight:normal;\n    text-align:left;\n    line-height: 44px;\n    vertical-align: middle;\n}\n\n.linkBackButtonText {\n    text-decoration: none;\n}\n\n#floating-panel {\n    position: absolute;\n    top: 10px;\n    left: 25%;\n    z-index: 5;\n    background-color: #fff;\n    padding: 5px;\n    border: 1px solid #999;\n    text-align: center;\n    font-family: 'Roboto','sans-serif';\n    line-height: 30px;\n    padding-left: 10px;\n}\n\n#floating-panel {\n    position: absolute;\n    top: 5px;\n    left: 50%;\n    margin-left: -180px;\n    width: 350px;\n    z-index: 5;\n    background-color: #fff;\n    padding: 5px;\n    border: 1px solid #999;\n}\n#latlng {\n    width: 225px;\n}\n\n#map {\n    /* height: 960px; */\n    height: calc(100% - 64px);\n}\n\n/* スコア画面 */\n.scoreCellColl {\n    width: 100%;\n    height: 64px;\n    font-family:'Hiragino Kaku Gothic Pro','Meiryo';\n    font-size:16px;\n    font-weight:normal;\n    color:#4f4f4f;\n    line-height: 20px;\n    vertical-align: middle;\n    flex: 1;\n}\n\n.scoreCell {\n    width: 100%;\n    height: 64px;\n    background-color: #ffffff;\n    display: flex;\n    align-items: center;\n}\n\n.scoreTextScore {\n    text-align:right;\n}\n", ""]);
 
 // exports
 
@@ -4429,8 +4427,10 @@ var render = function() {
       _vm._l(_vm.scores, function(score) {
         return _c("div", [
           _c("div", { staticClass: "scoreCell" }, [
-            _c("div", { staticClass: "scoreCellColl" }, [
-              _c("table", { attrs: { border: "0", width: "100%" } }, [
+            _c(
+              "table",
+              { staticClass: "scoreCellColl", attrs: { border: "0" } },
+              [
                 _c("tr", [
                   _c("td", { attrs: { width: "5%" } }),
                   _vm._v(" "),
@@ -4450,8 +4450,8 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", { attrs: { width: "5%" } })
                 ])
-              ])
-            ])
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "appHeaderBorder" })
@@ -4462,6 +4462,87 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/scoreUserTest.vue?vue&type=template&id=8c3db818&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/scoreUserTest.vue?vue&type=template&id=8c3db818& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "appWrapper" }, [
+    _c("div", { staticClass: "appHeader" }, [
+      _c("div", { staticClass: "appHeaderTitle" }, [
+        _c("table", { attrs: { border: "0", width: "100%" } }, [
+          _c("tr", [
+            _c(
+              "td",
+              { attrs: { width: "20%" } },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "linkBackButtonText",
+                    attrs: { to: { name: "root-view" } }
+                  },
+                  [_vm._v("Back")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", { attrs: { width: "60%" } }, [_vm._v("Result")]),
+            _vm._v(" "),
+            _c("td", { attrs: { width: "20%" } })
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "appHeaderBorder" }),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "appHeaderBorder" })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "scoreCell" }, [
+      _c("table", { staticClass: "scoreCellColl", attrs: { border: "0" } }, [
+        _c("tr", [
+          _c("td", { attrs: { width: "5%" } }),
+          _vm._v(" "),
+          _c("td", { attrs: { width: "30%" } }, [_vm._v("miura")]),
+          _vm._v(" "),
+          _c("td", { attrs: { width: "30%" } }, [_vm._v("アメリカ合衆国")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "scoreTextScore", attrs: { width: "30%" } }, [
+            _vm._v("100 sec")
+          ]),
+          _vm._v(" "),
+          _c("td", { attrs: { width: "5%" } })
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -18465,11 +18546,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_modalDialog_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/modalDialog.vue */ "./resources/js/components/modalDialog.vue");
 /* harmony import */ var _components_scoreCountry_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/scoreCountry.vue */ "./resources/js/components/scoreCountry.vue");
 /* harmony import */ var _components_scoreUser_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/scoreUser.vue */ "./resources/js/components/scoreUser.vue");
+/* harmony import */ var _components_scoreUserTest_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/scoreUserTest.vue */ "./resources/js/components/scoreUserTest.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 
 
@@ -18898,6 +18981,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUser_vue_vue_type_template_id_30ff0d7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/scoreUserTest.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/scoreUserTest.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _scoreUserTest_vue_vue_type_template_id_8c3db818___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scoreUserTest.vue?vue&type=template&id=8c3db818& */ "./resources/js/components/scoreUserTest.vue?vue&type=template&id=8c3db818&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _scoreUserTest_vue_vue_type_template_id_8c3db818___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _scoreUserTest_vue_vue_type_template_id_8c3db818___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/scoreUserTest.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/scoreUserTest.vue?vue&type=template&id=8c3db818&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/scoreUserTest.vue?vue&type=template&id=8c3db818& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUserTest_vue_vue_type_template_id_8c3db818___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./scoreUserTest.vue?vue&type=template&id=8c3db818& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/scoreUserTest.vue?vue&type=template&id=8c3db818&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUserTest_vue_vue_type_template_id_8c3db818___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_scoreUserTest_vue_vue_type_template_id_8c3db818___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

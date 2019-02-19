@@ -13,6 +13,7 @@ import game from './components/game.vue';
 import modalDialog from './components/modalDialog.vue';
 import scoreCountry from './components/scoreCountry.vue';
 import scoreUser from './components/scoreUser.vue';
+import scoreUserTest from './components/scoreUserTest.vue';
 
 //require('./bootstrap');
 

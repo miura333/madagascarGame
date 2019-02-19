@@ -14,17 +14,15 @@
         <div class="appHeaderBorder"></div>
         <div v-for="score in scores">
             <div class="scoreCell">
-                <div class="scoreCellColl">
-                    <table border="0" width="100%">
-                        <tr>
-                            <td width="5%"></td>
-                            <td width="30%">{{score.user_name}}</td>
-                            <td width="30%">{{getCountryName(score.country_code)}}</td>
-                            <td width="30%" class="scoreTextScore">{{score.score.toFixed(1)}} sec</td>
-                            <td width="5%"></td>
-                        </tr>
-                    </table>
-                </div>
+                <table border="0" class="scoreCellColl">
+                    <tr>
+                        <td width="5%"></td>
+                        <td width="30%">{{score.user_name}}</td>
+                        <td width="30%">{{getCountryName(score.country_code)}}</td>
+                        <td width="30%" class="scoreTextScore">{{score.score.toFixed(1)}} sec</td>
+                        <td width="5%"></td>
+                    </tr>
+                </table>
             </div>
             <div class="appHeaderBorder"></div>
         </div>
