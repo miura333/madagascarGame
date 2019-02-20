@@ -17,7 +17,7 @@
             <h3 slot="header">Goooooal!</h3>
             <div slot="body">
                 Your name<br>
-                <input v-model="user_name"><br>
+                <input v-model="user_name" class="nameTextBox"><br>
                 <br>
                 タイムは{{count.toFixed(1)}}秒でした。<br>
                 名前を入力してタイムを登録！
